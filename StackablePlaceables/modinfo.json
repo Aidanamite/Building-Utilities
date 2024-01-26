@@ -1,0 +1,54 @@
+{
+  "name": "Building Utilities",
+  "author": "Aidanamite",
+  "description": "Allows you to build in ways not before possible",
+  "version": "2.6.0",
+  "license": "GNU AGPLv3",
+  "icon": "icon.png",
+  "banner": "banner.jpg",
+  "gameVersion": "1.0",
+  "updateUrl": "https://www.raftmodding.com/api/v1/mods/stackable-placeables/version.txt",
+  "isModPermanent": false,
+  "excludedFiles": [],
+  "modSettings": [
+    {
+      "text": "Enable Support Override",
+      "name": "supportOverride",
+      "type": "checkbox",
+      "default": false
+    },
+    {
+      "text": "Toggle Keybinds Popup",
+      "name": "popupKeybind",
+      "type": "keybind",
+      "mainDefault": "h"
+    },
+    {
+      "text": "Support Override Mode",
+      "name": "supportMode",
+      "type": "combobox",
+      "default": "normal",
+      "values": [ "normal", "full" ]
+    },
+    {
+      "text": "Surface Override Type",
+      "name": "surfaceOverride",
+      "type": "combobox",
+      "default": "None",
+      "values": [ "None" ]
+    },
+    {
+      "text": "Ignore Pipe Collisions",
+      "name": "pipeOverride",
+      "type": "checkbox",
+      "default": false
+    },
+    {
+      "text": "Move Block",
+      "name": "moveKeybind",
+      "type": "keybind",
+      "access": "globalcustom",
+      "mainDefault": "g"
+    }
+  ]
+}
