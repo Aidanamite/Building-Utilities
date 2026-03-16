@@ -606,7 +606,7 @@ namespace StackablePlaceables {
         }
 
         public static void Broadcast(this Message message, NetworkChannel channel = MessageType.Channel) => ComponentManager<Raft_Network>.Value.RPC(message, Target.Other, EP2PSend.k_EP2PSendReliable, channel);
-        public static void Send(this Message message, CSteamID steamID, NetworkChannel channel = MessageType.Channel) => ComponentManager<Raft_Network>.Value.SendP2P(steamID, message, EP2PSend.k_EP2PSendReliable, channel);
+        public static void Send(this Message message, Network_UserId steamID, NetworkChannel channel = MessageType.Channel) => ComponentManager<Raft_Network>.Value.SendP2P(steamID, message, EP2PSend.k_EP2PSendReliable, channel);
 
         public static bool IsOnlyXOrZ(this Vector3 vector) => vector.y == 0 && ((vector.x == 0 && vector.z != 0) || (vector.x != 0 && vector.z == 0));
     }
