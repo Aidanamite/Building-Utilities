@@ -5,11 +5,11 @@
 :: Defining the window title
 title RML Mod Build Script
 :: Retrieving the current folder name
-for %%* in (.) do set foldername=%%~n*
+set foldername=%1
 :: Creating a folder to contain temporary files for the build
 mkdir "build"
-:: Copying the solution directory in the "build" folder except ".csproj, .rmod" files and "bin, obj" folders.
-robocopy "%foldername%" "build" /E /XF *.csproj *.rmod /XD bin obj
+:: Copying the solution directory in the "build" folder except ".csproj, .rmod build.bat" files and "bin, obj, Properties" folders.
+robocopy "%foldername%" "build" /E /XF *.csproj *.rmod build.bat /XD bin obj Properties
 :: Checking if a .rmod with the same name already exists and if it does, delete it.
 if exist "%foldername%.rmod" ( del "%foldername%.rmod" )
 :: Zipping the "build" folder. (.rmod are just zipped files)

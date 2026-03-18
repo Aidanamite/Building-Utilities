@@ -2,7 +2,7 @@
   "name": "Building Utilities",
   "author": "Aidanamite",
   "description": "Allows you to build in ways not before possible",
-  "version": "2.6.0",
+  "version": "2.7.0",
   "license": "GNU AGPLv3",
   "icon": "icon.png",
   "banner": "banner.jpg",
@@ -12,23 +12,13 @@
   "excludedFiles": [],
   "modSettings": [
     {
-      "text": "Enable Support Override",
-      "name": "supportOverride",
-      "type": "checkbox",
-      "default": false
-    },
-    {
-      "text": "Toggle Keybinds Popup",
-      "name": "popupKeybind",
-      "type": "keybind",
-      "mainDefault": "h"
-    },
-    {
       "text": "Support Override Mode",
       "name": "supportMode",
       "type": "combobox",
-      "default": "normal",
-      "values": [ "normal", "full" ]
+      "default": "disabled",
+      "values": [ "disabled", "normal", "full" ],
+      "member": "supportMode",
+      "memberRealtime": true
     },
     {
       "text": "Surface Override Type",
@@ -41,14 +31,69 @@
       "text": "Ignore Pipe Collisions",
       "name": "pipeOverride",
       "type": "checkbox",
-      "default": false
+      "default": false,
+      "member": "overridePipeCollisions",
+      "memberRealtime": true
+    },
+    {
+      "text": "Toggle Keybinds Popup",
+      "name": "popupKeybind",
+      "type": "keybind",
+      "mainDefault": "h",
+      "member": "togglePopupKey"
+    },
+    {
+      "text": "Snug Building",
+      "name": "snugKeybind",
+      "type": "keybind",
+      "mainDefault": "m",
+      "member": "snugKey"
+    },
+    {
+      "text": "Snug Key Mode",
+      "name": "snugHold",
+      "type": "combobox",
+      "default": "Hold Enable",
+      "values": [ "Hold Enable", "Toggle", "Hold Disable" ],
+      "member": "snugHold",
+      "memberRealtime": true
+    },
+    {
+      "text": "Snug Detection Mode",
+      "name": "snugDetect",
+      "type": "combobox",
+      "default": "Double Cast",
+      "values": [ "Double Cast", "Simple Nudge", "Simple Nudge x2" ],
+      "member": "snugDetect",
+      "memberRealtime": true,
+      "tooltip": [
+        "Controls how the snug building mode detects where it should place the block. Double Cast should generally get the best results but may be the laggiest and Simple Nudge generally gets the least accurate and reliable results but is likely to the fastest",
+        "• Double Cast: First does a cast set to push forward in a straight line, then does a second a second cast along the slide face to check for pushing into a corner",
+        "• Simple Nudge: Attempts to nudge the placement position outside of the intersecting colliders",
+        "• Simple Nudge x2: Same as Simple Nudge but repeats the process a second time to try and get a better final result"
+      ]
+    },
+    {
+      "text": "Change Recursive Mode",
+      "name": "recursiveKey",
+      "type": "keybind",
+      "mainDefault": "b",
+      "member": "recursiveKey"
+    },
+    {
+      "text": "Match Placement",
+      "name": "lockKey",
+      "type": "keybind",
+      "mainDefault": "j",
+      "member": "lockKey"
     },
     {
       "text": "Move Block",
       "name": "moveKeybind",
       "type": "keybind",
       "access": "globalcustom",
-      "mainDefault": "g"
+      "mainDefault": "g",
+      "member": "moveBlockKey"
     }
   ]
 }
