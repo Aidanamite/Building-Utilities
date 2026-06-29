@@ -506,7 +506,7 @@ Hold <color=#FFFFFF>[Alt]</color>:
  <color=#{(data.alt && data.sprint ? "B0E0B0" : "E0B0B0")}>-[{sprintName}]: Ignore instability</color>
 
 {(data.snugmode == SnugKeyMode.Toggle ? "" : "Hold ")}<color=#FFFFFF>[{data.snugkey.ToShortString()}]</color>: {(data.snugmode == SnugKeyMode.Toggle ? "Toggle" : data.snugmode == SnugKeyMode.HoldEnable ? "Enable" : "Disable")} snug building mode
-<color=#FFFFFF>[{data.recursKey.ToShortString()}]</color>: Cycle recursive mode. Current: {data.recurs}{(
+<color=#FFFFFF>[{data.recursKey.ToShortString()}]</color>: Cycle recursive mode. Current: <color=#FFFFFF>{data.recurs}</color>{(
 data.recurs != RecursiveMode.Single
     ? data.recursState == 0
         ? "\n   -<color=#FFFFFF>[LMB]</color>: Start Placement"
@@ -811,7 +811,12 @@ Hold <color=#{(data.match ? "B0E0B0" : "E0B0B0")}>[{data.matchKey.ToShortString(
             {
                 Message_BlockCreator_PlaceBlock message_BlockCreator_PlaceBlock = new Message_BlockCreator_PlaceBlock(Messages.BlockCreator_PlaceBlock, self, blockItem.UniqueIndex, SaveAndLoad.GetUniqueObjectIndex(), SaveAndLoad.GetUniqueObjectIndex(), NetworkUpdateManager.GetUniqueBehaviourIndex(), position, rotation, -1, dps);
                 ComponentManager<Raft_Network>.Value.RPC(message_BlockCreator_PlaceBlock, Target.Other, EP2PSend.k_EP2PSendReliable, NetworkChannel.Channel_Game);
+
+                var prevCheat = Cheat.UseGodMode;
+                Cheat.UseGodMode = true; // this is used to prevent nonplaceables from spending cost materials during place. placable cost is prevented by -1 hotslot index
                 self.CreateBlock(blockItem, message_BlockCreator_PlaceBlock.LocalPosition, message_BlockCreator_PlaceBlock.LocalEuler, message_BlockCreator_PlaceBlock.dpsType, -1, false, message_BlockCreator_PlaceBlock.blockObjectIndex, message_BlockCreator_PlaceBlock.networkedObjectIndex, message_BlockCreator_PlaceBlock.networkedBehaviourIndex);
+                Cheat.UseGodMode = prevCheat;
+
                 return;
             }
             Message_BlockCreator_PlaceBlock message = new Message_BlockCreator_PlaceBlock(Messages.BlockCreator_PlaceBlock, self, blockItem.UniqueIndex, 0U, 0U, 0U, position, rotation, -1, dps);
