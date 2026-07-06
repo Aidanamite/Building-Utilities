@@ -1330,7 +1330,7 @@ Hold <color=#{(data.match ? "B0E0B0" : "E0B0B0")}>[{data.matchKey.ToShortString(
                         {
                             if (startedDPS == ~DPS.Default)
                                 startedDPS = b.dpsType;
-                            __instance.selectedBlock.transform.localPosition = b.transform.localPosition;
+                            __instance.selectedBlock.transform.localPosition = mainGhost = b.transform.localPosition;
                             __instance.selectedBlock.transform.localRotation = b.transform.localRotation;
                         }
                     }
